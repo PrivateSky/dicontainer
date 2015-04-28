@@ -8,25 +8,28 @@ DI container inspired by angular.js with one major twist: a service can become "
  
 
 # Install
-npm install container 
+   npm install container 
 
-//now in your code you can get an instance of the container
-var container = require("container").container;
+    //now in your code you can get an instance of the container
+    var container = require("container").container;
 
 #API
-/* name: name of teh service
-  arr: array with  dependencies (names) for this service
-  callback: function called when all dependencies are ready
-*/
-container.service(name, arr, callback)
-//identical with  service but to signal that a callback can instantiate local/closure things that are not services
-container.declareDependency(name, arr, callback)
 
-//directly assign a value to the service. Tt can't be null. It will try to initialise other services depedning on name
-container.resolve(name,value)
+    /* name: name of teh service
+      arr: array with  dependencies (names) for this service
+      callback: function called when all dependencies are ready
+    */
+    container.service(name, arr, callback)
 
-//  Declare that a service or feature is not working properly. All services depending on this will get notified
-container.outOfService(name,value)
+
+    //identical with  service but to signal that a callback can instantiate local/closure things that are not services
+    container.declareDependency(name, arr, callback)
+
+    //directly assign a value to the service. Tt can't be null. It will try to initialise other services depedning on name
+    container.resolve(name,value)
+
+    //  Declare that a service or feature is not working properly. All services depending on this will get notified
+    container.outOfService(name,value)
 
 
 The callback given to service or declareDependecy functions will behave like in angular except that the first parameter will be always a boolean (outOfService flag) that will signal that the callback is called for invalidating the current service or for proper initialisation
@@ -53,8 +56,8 @@ The callback given to service or declareDependecy functions will behave like in 
             root = fakeRoot;
         }
     });
-
-   //initialisation will be triggered by calling container.service('node_base', [''],..) or container.resolve('node_base')
+    //initialisation will be triggered by calling container.service('node_base', [''],..) or
+    container.resolve('node_base')
 
 
 #more examples
