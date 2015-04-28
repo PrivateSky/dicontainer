@@ -10,7 +10,7 @@ DI container inspired by angular.js with one major twist: a service can become "
 # Install
 npm install container 
 
-//now in your code you can get an instance of the container
+/*now in your code you can get an instance of the container*/
 var container = require("container").container;
 
 #API
@@ -23,15 +23,21 @@ var container = require("container").container;
     container.service(name, arr, callback)
 
 ## declareDependency
-    //identical with  service but to signal that a callback can instantiate local/closure things that are not services
+    /*  identical with  service but to clearify for programmers that a callback can instantiate local/closure things
+    that are not really services
+    */
     container.declareDependency(name, arr, callback)
 
 ## resolve
-    //directly assign a value to the service. Tt can't be null. It will try to initialise other services depedning on name
+    /* Directly assign a value to the service. Tt can't be null. 
+    It will try to initialise other services depedning on name
+    */
     container.resolve(name,value)
 
 ## outOfService
-    //  Declare that a service or feature is not working properly. All services depending on this will get notified
+    /*  Declare that a service or feature is not working properly. 
+    All the services depending on this will get notified
+    */
     container.outOfService(name,value)
 
 The callback given to service or declareDependecy functions will behave like in angular except that the first parameter will be always a boolean (outOfService flag) that will signal that the callback is called for invalidating the current service or for proper initialisation
@@ -59,7 +65,8 @@ The callback given to service or declareDependecy functions will behave like in 
         }
     });
 
-    //initialisation will be triggered by calling container.service('node_base', [''],..) or    container.resolve('node_base')
+    /* initialisation will be triggered by calling container.service('node_base', [''],..) or */
+    container.resolve('node_base')
 
 
 #more examples
