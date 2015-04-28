@@ -10,8 +10,8 @@ DI container inspired by angular.js with one major twist: a service can become "
 # Install
 npm install container 
 
-/*now in your code you can get an instance of the container*/
-var container = require("container").container;
+    /*now in your code you can get an instance of the container*/
+    var container = require("container").container;
 
 #API
 
