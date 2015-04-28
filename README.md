@@ -25,8 +25,8 @@ npm install container
 The callback given to service or declareDependecy functions will behave like in angular except that the first parameter will be always a boolean (outOfService flag) that will signal that the callback is called for invalidating the current service or for proper initialisation
 
 ## declareDependency
-    /*  identical with  service but to clearify for programmers that a callback can instantiate local/closure things
-    that are not really services
+    /*  identical with  service but for better intuition.
+    A callback can instantiate multiple local/closure variables that are not exposed services.
     */
     container.declareDependency(name, arr, callback)
 
@@ -40,8 +40,11 @@ The callback given to service or declareDependecy functions will behave like in 
     /*  Declare that a service or feature is not working properly. 
     All the services depending on this will get notified
     */
-    container.outOfService(name,value)
-
+    container.outOfService(name)
+    /*
+    Now.. all the services got notified Y
+    You have to call container.resolve(name, value) to enable normal working
+    */
 
 
 # Example
