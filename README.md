@@ -30,7 +30,7 @@ The callback given to service or declareDependecy functions will behave like in 
     container.declareDependency(name, arr, callback)
 
 ## resolve
-    /* Directly assign a value to the service. Tt can't be null. 
+    /* Directly assign a value to the service. Tt can't be null!!!!
     It will try to initialise other services depending on name.
     */
     container.resolve(name,value)
@@ -70,7 +70,7 @@ The callback given to service or declareDependecy functions will behave like in 
     });
 
     /* initialisation will be triggered by calling container.service('node_base', [],..) or: */
-    container.resolve('node_base')
+    container.resolve('node_base', value)
 
 
 # Test cases
