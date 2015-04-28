@@ -42,7 +42,7 @@ The callback given to service or declareDependecy functions will behave like in 
     */
     container.outOfService(name)
     /*
-    Now.. all the services got notified Y
+    Now.. all the services depending on 'name' got notified and are working in fail recovery mode.
     You have to call container.resolve(name, value) to enable normal working
     */
 
