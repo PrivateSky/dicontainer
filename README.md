@@ -1,11 +1,10 @@
 # container node.js module
-DI container inspired by angular.js with one major twist: a service can become "out of service" and your entire application will know to work in "fail safe" mode. If everything is working fine again all services depending on the failing one will get notified.
+DI container inspired by angular.js with one major twist: a service can become "out of service" and your entire application will know to work in "fail safe" mode. If everything is working fine again all services depending on the failing one will get notified and normal working will be magically enabled again .
 
 # Why?
- We found that existing modules for DI doesn't handle the fails. Externale services can go down or the network can go down and error recovery code should automaticaly go up as fast as possible. Without a solid foundation on how objects get wired it is quite dificult to prevent loosing important data when failures happen.
+ We found that existing modules for DI doesn't handle the fails. Externale services can go down or the network can go down and error recovery code should automaticaly go up as fast as possible. Without a solid foundation on how objects get wired it is quite dificult to prevent loosing important data when such failures happens.
 
- Also, we extened a bit idea of DI to go beyound object instantiation on  knowning precisely when a specific feature is ready to be used in other zones of the application  depending on it. 
- 
+ Also, we extened a bit idea of DI to go beyound object instantiation on knowning precisely when a specific feature is ready to be used in other zones of the application. Simple object instantiation is not enough, you usually want to known when a connection is ready or an object is properly initialised. Therefore the API offerd by this module is created to provide nice sollutions on the problems caused by inherent node.js's asyncronism.
 
 # Install
 npm install container 
@@ -32,7 +31,7 @@ The callback given to service or declareDependecy functions will behave like in 
 
 ## resolve
     /* Directly assign a value to the service. Tt can't be null. 
-    It will try to initialise other services depedning on name
+    It will try to initialise other services depending on name.
     */
     container.resolve(name,value)
 
@@ -50,11 +49,11 @@ The callback given to service or declareDependecy functions will behave like in 
 # Example
 
     
-    container.service('node', ['node_base'], function(outOfService, leaf){
+    container.service('node', ['node_base'], function(outOfService, node_base){
         if(!outOfService){
-            return {type:"node", leaf:leaf}
+            return {type:"node"}
         } else {
-            assert.true(leaf == null);
+           //... will be called anyway at the begining for initialisation
         }
     })
     
@@ -70,12 +69,14 @@ The callback given to service or declareDependecy functions will behave like in 
         }
     });
 
-    /* initialisation will be triggered by calling container.service('node_base', [''],..) or */
+    /* initialisation will be triggered by calling container.service('node_base', [],..) or: */
     container.resolve('node_base')
 
 
 # Test cases
 
-More examples you can find in the test folder
+You can find other  examples in the test folder
 
-
+#Observation
+We do not try to treat circular dependencies. Circular services will never be initialised. 
+Normally it should not be a problem because even a smoke test should easily catch such errors. Some automated tests  should catch them also.
