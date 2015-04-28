@@ -1,10 +1,10 @@
 # container node.js module
-DI container inspired by angular.js with one major twist: a service can become "out of service"  and working fine again and all other services depending on it will get notified.
+DI container inspired by angular.js with one major twist: a service can become "out of service" and your entire application will know to work in "fail safe" mode. If everything is working fine again all services depending on the failing one will get notified.
 
 # Why?
- We found that existing modules for DI doesn't handle the errors. Externale services can go down or the network can go down and error recovery code should automaticaly go up as fast as possible. Without a solid foundation on how objects get wired it is quite dififcult to prevent loosing important data when such things happen.
+ We found that existing modules for DI doesn't handle the fails. Externale services can go down or the network can go down and error recovery code should automaticaly go up as fast as possible. Without a solid foundation on how objects get wired it is quite dificult to prevent loosing important data when failures happen.
 
- Also, we extened a bit idea of DI to go beyound object instantiation on  knowning precisely when a specific feature is ready to be used in other zones of the application  depending on it.
+ Also, we extened a bit idea of DI to go beyound object instantiation on  knowning precisely when a specific feature is ready to be used in other zones of the application  depending on it. 
  
 
 # Install
