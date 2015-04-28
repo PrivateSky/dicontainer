@@ -16,11 +16,13 @@ var container = require("container").container;
 #API
 
 ## service
-    /* name: name of teh service
-      arr: array with  dependencies (names) for this service
+    /* name: is the name of the service
+      arr: array with dependencies (names) for this service
       callback: function called when all dependencies are ready
     */
     container.service(name, arr, callback)
+
+The callback given to service or declareDependecy functions will behave like in angular except that the first parameter will be always a boolean (outOfService flag) that will signal that the callback is called for invalidating the current service or for proper initialisation
 
 ## declareDependency
     /*  identical with  service but to clearify for programmers that a callback can instantiate local/closure things
@@ -40,7 +42,7 @@ var container = require("container").container;
     */
     container.outOfService(name,value)
 
-The callback given to service or declareDependecy functions will behave like in angular except that the first parameter will be always a boolean (outOfService flag) that will signal that the callback is called for invalidating the current service or for proper initialisation
+
 
 # Example
 
@@ -61,7 +63,7 @@ The callback given to service or declareDependecy functions will behave like in 
             root = {type: "root", node: node};
             return root; //value used as value
         } else {
-            root = fakeRoot;
+            root = fakeRoot; //code handling out of service request (caching request or something else)
         }
     });
 
@@ -69,5 +71,8 @@ The callback given to service or declareDependecy functions will behave like in 
     container.resolve('node_base')
 
 
-#more examples
+# Test cases
+
+More examples you can find in the test folder
+
 
