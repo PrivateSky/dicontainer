@@ -1,8 +1,8 @@
 {
-  "name": "container",
+  "name": "safebox",
   "description": "Dependency Injection container similar with Angular's DI but with service failure detection",
-  "version": "0.1.1",
-   "_id": "whys@0.1.1",
+  "version": "0.1.2",
+   "_id": "safebox@0.1.2",
   "homepage": "https://github.com/salboaie/semantic-firewall",
   "author": {
     "name": "Alboaie Sinica",
@@ -28,7 +28,7 @@
   "engines": {
     "node": ">=0.10.0"
   },
-  "main": "./lib/sf.js",
+  "main": "./lib/container.js",
   "licenses": [
     {
       "type": "LGPL",
