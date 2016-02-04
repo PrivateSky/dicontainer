@@ -1,6 +1,6 @@
 
-var container = require("semantic-firewall").container;
-var assert = require("semantic-firewall").assert;
+var container = require("safebox").container;
+var assert = require("double-check").assert;
 
 require("./hiJackAssert.js");
 
