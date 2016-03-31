@@ -1,8 +1,8 @@
 {
   "name": "safebox",
   "description": "Dependency Injection container similar with Angular's DI but with service failure detection",
-  "version": "0.2.0",
-   "_id": "safebox@0.2.0",
+  "version": "0.2.1",
+   "_id": "safebox@0.2.1",
   "homepage": "https://github.com/salboaie/safebox",
   "author": {
     "name": "Alboaie Sinica",
